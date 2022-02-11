@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from "react-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 
@@ -19,18 +18,14 @@ const RegisterFields = () => {
 
     return (
         <form onSubmit={handleSubmit(onSubmitCategory)}>
-            <label>First Name</label>
-            <input {...register("firstName", {required: true})} />
-            {
-                console.log("errors.firstName", errors.firstName)
-            }
-            {errors.firstName && <span>this is field required</span>}
             <label>Gender Selection</label>
-            <select {...register("gender")} >
+            <select {...register("gender", {required: true})} >
+                <option value="">Select</option>
                 <option value="female">female</option>
                 <option value="male">male</option>
                 <option value="other">other</option>
             </select>
+            {errors.gender && <span>This field is required</span>}
             <input type="submit" />
         </form>
     );
